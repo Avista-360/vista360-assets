@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci pour votre achat - Vista360</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #f8f9fa; color: #333; padding: 40px; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; max-width: 500px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h1 { color: #28a745; }
+    .details { margin: 20px 0; }
+    .cta { margin-top: 30px; }
+    .cta a { display: inline-block; background: #0070ba; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; }
+    .cta a:hover { background: #005c99; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>✅ Merci pour votre achat !</h1>
+    <p class="details">Votre commande <strong id="pack"></strong> a bien été enregistrée.</p>
+    <p>Vous recevrez un email sous 24h avec :<br>
+      • Votre facture<br>
+      • Le détail de votre Pack Vista360<br>
+      • Les étapes pour commencer</p>
+    <div class="cta">
+      <a href="https://www.avista360.fr">Retour au site</a>
+    </div>
+  </div>
+
+  <script>
+    // Lecture des paramètres de l’URL (ex: ?item_name=Pack+Découverte)
+    const params = new URLSearchParams(window.location.search);
+    const pack = params.get("item_name") || "Vista360";
+    document.getElementById("pack").textContent = pack;
+  </script>
+</body>
+</html>
