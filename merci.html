@@ -3,35 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Merci pour votre achat - Vista360</title>
+  <title>Confirmation de commande - Vista360</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; background: #f8f9fa; color: #333; padding: 40px; }
-    .card { background: #fff; padding: 20px; border-radius: 12px; max-width: 500px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    h1 { color: #28a745; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #f8f9fa; 
+      color: #333; 
+      padding: 40px; 
+      text-align: center;
+    }
+    .card { 
+      background: #fff; 
+      padding: 20px; 
+      border-radius: 12px; 
+      max-width: 600px; 
+      margin: auto; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+      text-align: left;
+    }
+    h1 { 
+      color: #28a745; 
+      text-align: center;
+    }
     .details { margin: 20px 0; }
-    .cta { margin-top: 30px; }
-    .cta a { display: inline-block; background: #0070ba; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; }
+    .details p { margin: 8px 0; }
+    .cta { margin-top: 30px; text-align: center; }
+    .cta a { 
+      display: inline-block; 
+      background: #0070ba; 
+      color: #fff; 
+      padding: 12px 24px; 
+      border-radius: 8px; 
+      text-decoration: none; 
+    }
     .cta a:hover { background: #005c99; }
+    .footer { 
+      font-size: 13px; 
+      color: #777; 
+      margin-top: 20px; 
+      text-align: center; 
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>✅ Merci pour votre achat !</h1>
-    <p class="details">Votre commande <strong id="pack"></strong> a bien été enregistrée.</p>
-    <p>Vous recevrez un email sous 24h avec :<br>
-      • Votre facture<br>
-      • Le détail de votre Pack Vista360<br>
-      • Les étapes pour commencer</p>
+    <p>Votre commande a bien été enregistrée. Voici un récapitulatif :</p>
+    
+    <div class="details">
+      <p><strong>Pack choisi :</strong> <span id="pack"></span></p>
+      <p><strong>Montant :</strong> <span id="amount"></span> <span id="currency"></span></p>
+      <p><strong>Référence commande :</strong> <span id="custom"></span></p>
+      <p><strong>ID Acheteur (PayPal) :</strong> <span id="payer"></span></p>
+    </div>
+    
+    <p>👉 Vous recevrez sous 24h votre facture officielle par email, ainsi que les étapes pour démarrer avec votre Pack Vista360.</p>
+    
     <div class="cta">
       <a href="https://www.avista360.fr">Retour au site</a>
+    </div>
+    <div class="footer">
+      Vista360 • Service Clients • avp.tech@gmail.com
     </div>
   </div>
 
   <script>
-    // Lecture des paramètres de l’URL (ex: ?item_name=Pack+Découverte)
+    // Lecture des paramètres envoyés par PayPal
     const params = new URLSearchParams(window.location.search);
-    const pack = params.get("item_name") || "Vista360";
-    document.getElementById("pack").textContent = pack;
+
+    document.getElementById("pack").textContent = params.get("item_name") || "Non précisé";
+    document.getElementById("amount").textContent = params.get("amount") || "0.00";
+    document.getElementById("currency").textContent = params.get("currency_code") || "EUR";
+    document.getElementById("custom").textContent = params.get("custom") || "N/A";
+    document.getElementById("payer").textContent = params.get("PayerID") || "N/A";
   </script>
 </body>
 </html>
+
