@@ -2470,7 +2470,7 @@ function getGoogleEditorialSummary(placeId) {
     return null;
   }
   
-  const GOOGLE_API_KEY = "AIzaSyASk7DOOMOeDFA1UBX781d_EPP_VXBu4is"; // 👈 À REMPLACER
+  const GOOGLE_API_KEY = "LA Clé API"; // 👈 À REMPLACER
   
   try {
     // Configuration de la requête avec timeout
